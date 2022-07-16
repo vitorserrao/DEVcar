@@ -1,0 +1,8 @@
+C:\Users\vitor\OneDrive\Área de Trabalho\Devinhouse\Módulo2\Devcar\bin\Debug\ConsoleApplication.exe.config
+C:\Users\vitor\OneDrive\Área de Trabalho\Devinhouse\Módulo2\Devcar\bin\Debug\ConsoleApplication.exe
+C:\Users\vitor\OneDrive\Área de Trabalho\Devinhouse\Módulo2\Devcar\bin\Debug\ConsoleApplication.pdb
+C:\Users\vitor\OneDrive\Área de Trabalho\Devinhouse\Módulo2\Devcar\obj\x86\Debug\Devcar.csproj.AssemblyReference.cache
+C:\Users\vitor\OneDrive\Área de Trabalho\Devinhouse\Módulo2\Devcar\obj\x86\Debug\Devcar.csproj.SuggestedBindingRedirects.cache
+C:\Users\vitor\OneDrive\Área de Trabalho\Devinhouse\Módulo2\Devcar\obj\x86\Debug\Devcar.csproj.CoreCompileInputs.cache
+C:\Users\vitor\OneDrive\Área de Trabalho\Devinhouse\Módulo2\Devcar\obj\x86\Debug\ConsoleApplication.exe
+C:\Users\vitor\OneDrive\Área de Trabalho\Devinhouse\Módulo2\Devcar\obj\x86\Debug\ConsoleApplication.pdb
