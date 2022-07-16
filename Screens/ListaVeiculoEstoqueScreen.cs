@@ -25,7 +25,7 @@ namespace Devcar.Screens
                 foreach (var veiculo in estoque.Veiculos)
                 {
 
-                    Console.WriteLine($"Veiculo {count}: {veiculo.ToString()}" + "\r\n");
+                    Console.WriteLine($"{count}: {veiculo.ToString()}" + "\r\n");
 
                     count++;
                 }

@@ -11,6 +11,7 @@ namespace Devcar.Models
 {
     public class Veiculo
     {
+        public string tipo { get; set; }
         public string chassi { get; set; }
         public DateTime dataFabricacao { get; set; }
         public string nome { get; set; }
@@ -23,9 +24,10 @@ namespace Devcar.Models
         public DateTime dataVenda { get; set; }
         public decimal valorVendido { get; set; }
 
-        public Veiculo(string chassi, DateTime dataFabricacao, string nome, string placa,decimal valor, 
+        public Veiculo(string tipo,  string chassi, DateTime dataFabricacao, string nome, string placa,decimal valor, 
                        string cpfCliente, string cor, double potencia, bool vendido,decimal valorVendido, DateTime dataVenda)
-        {
+        {   
+            this.tipo = tipo;
             this.chassi = chassi;
             this.dataFabricacao = dataFabricacao;
             this.nome = nome;
@@ -94,22 +96,6 @@ namespace Devcar.Models
             valor = novoValor;
         }
 
-        public override string ToString()
-        {
-            return string.Format("Chassi: {0} | Data de Fabricação: {1} | Nome: {2}| " + "\r\n" +
-                "Placa: {3} |R$ Valor: {4:c}| CPF: {5}, Cor: {6}, Potência: {7}, Vendido: {8}, Valor da Venda {9}, Data da venda {10} ", 
-             chassi,
-             dataFabricacao,
-             nome,
-             placa,
-             valor,
-             cpfCliente,
-             cor,
-             potencia,
-             vendido,
-             valorVendido,
-             dataVenda
-            );
-        }
+       
     }
 }

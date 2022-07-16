@@ -33,7 +33,7 @@ namespace Devcar.Screens
             Console.Write("Cor: ");
             var cor = Console.ReadLine();
 
-            var motoTriciculo = new MotoTriciculo(chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalRodas);
+            var motoTriciculo = new MotoTriciculo("Moto/Tricículo",chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalRodas);
             Console.WriteLine("=====================================");
             Console.WriteLine("Veículo adicionado com sucesso!");
             estoque.Veiculos.Add(motoTriciculo);
@@ -63,7 +63,7 @@ namespace Devcar.Screens
             Console.Write("Cor: ");
             var cor = Console.ReadLine();
 
-            var carro = new Carro(chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalPorta, combustivel);
+            var carro = new Carro("Carro",chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalPorta, combustivel);
             Console.WriteLine("=====================================");
             Console.WriteLine("Veículo adicionado com sucesso!");
             estoque.Veiculos.Add(carro);
@@ -95,7 +95,7 @@ namespace Devcar.Screens
             Console.Write("Cor (Produzimos Apenas em Roxo): ");
             var cor = Console.ReadLine();
 
-            var camionete = new Camionete(chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalPorta, combustivel, cacamba);
+            var camionete = new Camionete("Camionete", chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalPorta, combustivel, cacamba);
             Console.WriteLine("=====================================");
             Console.WriteLine("Veículo adicionado com sucesso!");
             estoque.Veiculos.Add(camionete);
