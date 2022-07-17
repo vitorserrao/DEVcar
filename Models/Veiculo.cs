@@ -43,6 +43,11 @@ namespace Devcar.Models
             this.preco = preco; 
         }
 
+        public void test()
+        {
+           
+            cor= "roxo";
+        }
         public static void VendaVeiculo(Estoque estoque)
         {
             Console.Clear();
