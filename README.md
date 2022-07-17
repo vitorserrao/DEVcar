@@ -17,12 +17,13 @@ DEV-car é um sistema que automatiza o armazenamento de informações referentes
   Para vender um novo veículo basta digitar **2** no menu principal, e digitar o Chassi do veículo que deseja vender, CPF do comprador e o Valor da venda.
   
    ### Relatórios:
-  Para exibir um relatório  basta digitar **3** no menu principal, posteriomente escolher qual tipo de relatório deseja. Ao selecionar ver todos os veículos você tem a opção de selecionar por categoria ou todos os veículos, basta digitar o nome da categoria (*Carro, Moto, Camionete*) ou digitar *todos* para todos os veículos,
+  Para exibir um relatório  basta digitar **3** no menu principal, posteriomente escolher qual tipo de relatório deseja. Ao selecionar ver todos os veículos você tem a opção de selecionar por categoria ou todos os veículos, basta digitar o nome da categoria (*Carro, Moto, Camionete*) ou digitar *todos* para todos os veículos.
 
    ![alt text](https://github.com/vitorserrao/DEVcar/blob/main/img/Menu_Relatorio.JPG)
    ![alt text](https://github.com/vitorserrao/DEVcar/blob/main/img/Menu_Relatorio_2.JPG)
     
-    
+   ### Alteração  característica e valor:
+  Para exibir um relatório  basta digitar **4** no menu principal, assim pode-se alterar a cor do veículo e seu preço. 
    
 ## 🛠️ Construído com
 
