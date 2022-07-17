@@ -24,7 +24,7 @@ namespace Devcar.Screens
                 var dataFabricacao = DateTime.Now;
                 Console.Write("nome: ");
                 var nome = (Console.ReadLine());
-                Console.Write("Nímero de potencia (cavalos): ");
+                Console.Write("Número de potencia (cavalos): ");
                 var pot = Convert.ToDouble(Console.ReadLine());
                 Console.Write("Número de rodas: ");
                 var totalRodas = Convert.ToInt16(Console.ReadLine());
@@ -36,9 +36,12 @@ namespace Devcar.Screens
                 Console.Write("Preço do veículo R$: ");
                 var preco = Convert.ToDecimal(Console.ReadLine());
                 var motoTriciculo = new MotoTriciculo("moto", chassi, dataFabricacao, nome, placa, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), preco, totalRodas);
+                estoque.Veiculos.Add(motoTriciculo);
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine(motoTriciculo);
                 Console.WriteLine("=====================================");
                 Console.WriteLine("Veículo adicionado com sucesso!");
-                estoque.Veiculos.Add(motoTriciculo);
+                
                 Console.WriteLine("Enter para voltar ao Menu Principal!");
                 Console.ReadLine();
             }
@@ -69,9 +72,12 @@ namespace Devcar.Screens
                 Console.Write("Preço do veículo: ");
                 var preco = Convert.ToDecimal(Console.ReadLine());
                 var carro = new Carro("carro", chassi, dataFabricacao, nome, placa, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), preco, totalPorta, combustivel);
+                estoque.Veiculos.Add(carro);
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine(carro);
                 Console.WriteLine("=====================================");
                 Console.WriteLine("Veículo adicionado com sucesso!");
-                estoque.Veiculos.Add(carro);
+                
                 Console.WriteLine("Enter para voltar ao Menu Principal!");
                 Console.ReadLine();
             }
@@ -104,9 +110,12 @@ namespace Devcar.Screens
                 var cpf = "00000000";
                 Console.Write("IMPORTANTE: Produzimos apenas em cor Roxo \r\n");
                 var camionete = new Camionete("camionete", chassi, dataFabricacao, nome, placa, cpf, "roxo", pot, false, 0, new DateTime(2000, 01, 01), preco, totalPorta, combustivel, cacamba);
+                estoque.Veiculos.Add(camionete);
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine(camionete);
                 Console.WriteLine("=====================================");
                 Console.WriteLine("Veículo adicionado com sucesso!");
-                estoque.Veiculos.Add(camionete);
+
                 Console.WriteLine("Enter para voltar ao Menu Principal!");
                 Console.ReadLine();
             }

@@ -59,20 +59,27 @@ namespace Devcar.Models
             {
                 Tratamento(estoque, "principal","Veículo Não encontrado! Enter para voltar ao Menu Principal!");
             }
-            
-            
-         Console.Write("CPF do comprador : ");  
-         var cpfCliente = Console.ReadLine();
-         Console.Write("Valor da Venda: ");
-         var valorVendido = Convert.ToDecimal(Console.ReadLine());
-         filtrar[0].vendido = true;
-         filtrar[0].cpfCliente = cpfCliente;
-         filtrar[0].valorVendido = valorVendido;
-         filtrar[0].dataVenda = DateTime.Now;
-         Console.WriteLine("=================================================");
-         Console.WriteLine("Venda realizada com sucesso!");
-         Console.ReadLine();
-            
+            try
+            {
+                Console.Write("CPF do comprador : ");
+                var cpfCliente = Console.ReadLine();
+                Console.Write("Valor da Venda: ");
+
+                var valorVendido = Convert.ToDecimal(Console.ReadLine());
+                filtrar[0].vendido = true;
+                filtrar[0].cpfCliente = cpfCliente;
+                filtrar[0].valorVendido = valorVendido;
+                filtrar[0].valorVendido = valorVendido;
+                filtrar[0].dataVenda = DateTime.Now;
+                Console.WriteLine("-------------------------------------------------");
+                Console.WriteLine(filtrar[0]);
+                Console.WriteLine("=================================================");
+                Console.WriteLine("Venda realizada com sucesso!");
+                Console.ReadLine();
+            }
+
+            catch { Veiculo.Tratamento(estoque, "fabricar", "Ops! Digite um valor válido!"); }
+
         }
 
         public static void ListaTodosVeiculos(Estoque estoque)
