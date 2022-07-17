@@ -64,7 +64,7 @@ namespace Devcar.Models
          filtrar[0].cpfCliente = cpfCliente;
          filtrar[0].valorVendido = valorVendido;
          filtrar[0].dataVenda = DateTime.Now;
-         Console.WriteLine("==================================================");
+         Console.WriteLine("=================================================");
          Console.WriteLine("Venda realizada com sucesso!");
          Console.ReadLine();
             
