@@ -4,7 +4,7 @@ DEV-car é um sistema que automatiza o armazenamento de informações referentes
 
 * 📝 Instruções
   * Menu
-  ![alt text](https://github.com/vitorserrao/DEVcar/blob/main/img/Menu_Principal.JPG)
+   *![alt text](https://github.com/vitorserrao/DEVcar/blob/main/img/Menu_Principal.JPG)
 
 ## 🛠️ Construído com
 
