@@ -9,7 +9,7 @@ DEV-car é um sistema que automatiza o armazenamento de informações referentes
   ![alt text](https://github.com/vitorserrao/DEVcar/blob/main/img/Menu_Principal.JPG)
   
  ### Adicionar Novo Veículo:
-  Para adicionar um novo veículo basta digitar **1** no menu principal, em seguida selecione a categoria de veículo que deseja adcionar (*1* Moto/Tricículo, **2** Carro, **3** Camionete)
+  Para adicionar um novo veículo basta digitar **1** no menu principal, em seguida selecione a categoria de veículo que deseja adcionar (**1** Moto/Tricículo, **2** Carro, **3** Camionete)
 ## 🛠️ Construído com
 
 - [C#]- Todo sistema feito em C#.
