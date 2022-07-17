@@ -12,6 +12,7 @@ namespace Devcar.Repositories
         public IList<Veiculo> Veiculos { get; set; }
         public Estoque()
         {
+
             Veiculos = new List<Veiculo>(); 
         }
     }
