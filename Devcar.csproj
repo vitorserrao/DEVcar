@@ -64,11 +64,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Estoque.cs" />
-    <Compile Include="Repositories\Vendas.cs" />
     <Compile Include="Screens\AddVeiculoScreen.cs" />
     <Compile Include="Screens\ListaVeiculoEstoqueScreen.cs" />
     <Compile Include="Screens\Menu.cs" />
     <Compile Include="Screens\MenuFabricar.cs" />
+    <Compile Include="Screens\MenuInfs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\Devcar\FileContentIndex\merges\" />

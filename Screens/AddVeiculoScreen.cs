@@ -27,13 +27,14 @@ namespace Devcar.Screens
             var totalRodas = Convert.ToInt16(Console.ReadLine());
             Console.Write("Placa: ");
             var placa = (Console.ReadLine());
-            Console.Write("Valor de venda: ");
-            var valor = Convert.ToDecimal(Console.ReadLine());
             var cpf = "00000000";
             Console.Write("Cor: ");
             var cor = Console.ReadLine();
+            Console.Write("Preço do veículo: ");
+            var preco = Convert.ToDecimal(Console.ReadLine());
 
-            var motoTriciculo = new MotoTriciculo("Moto/Tricículo",chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalRodas);
+
+            var motoTriciculo = new MotoTriciculo("moto",chassi, dataFabricacao, nome, placa, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), preco, totalRodas);
             Console.WriteLine("=====================================");
             Console.WriteLine("Veículo adicionado com sucesso!");
             estoque.Veiculos.Add(motoTriciculo);
@@ -57,13 +58,13 @@ namespace Devcar.Screens
             var pot = Convert.ToDouble(Console.ReadLine());
             Console.Write("Placa: ");
             var placa = (Console.ReadLine());
-            Console.Write("Valor de venda: ");
-            var valor = Convert.ToDecimal(Console.ReadLine());
             var cpf = "00000000";
             Console.Write("Cor: ");
             var cor = Console.ReadLine();
+            Console.Write("Preço do veículo: ");
+            var preco = Convert.ToDecimal(Console.ReadLine());
 
-            var carro = new Carro("Carro",chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalPorta, combustivel);
+            var carro = new Carro("carro",chassi, dataFabricacao, nome, placa, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01),preco, totalPorta, combustivel);
             Console.WriteLine("=====================================");
             Console.WriteLine("Veículo adicionado com sucesso!");
             estoque.Veiculos.Add(carro);
@@ -89,13 +90,12 @@ namespace Devcar.Screens
             var pot = Convert.ToDouble(Console.ReadLine());
             Console.Write("Placa: ");
             var placa = (Console.ReadLine());
-            Console.Write("Valor de venda: ");
-            var valor = Convert.ToDecimal(Console.ReadLine());
+            Console.Write("Preço do veículo: ");
+            var preco = Convert.ToDecimal(Console.ReadLine());
             var cpf = "00000000";
-            Console.Write("Cor (Produzimos Apenas em Roxo): ");
-            var cor = Console.ReadLine();
-
-            var camionete = new Camionete("Camionete", chassi, dataFabricacao, nome, placa, valor, cpf, cor, pot, false, 0, new DateTime(2000, 01, 01), totalPorta, combustivel, cacamba);
+            Console.Write("IMPORTANTE: Produzimos apenas em cor Roxo \r\n");
+           
+            var camionete = new Camionete("camionete", chassi, dataFabricacao, nome, placa, cpf, "roxo", pot, false, 0, new DateTime(2000, 01, 01),preco, totalPorta, combustivel, cacamba);
             Console.WriteLine("=====================================");
             Console.WriteLine("Veículo adicionado com sucesso!");
             estoque.Veiculos.Add(camionete);

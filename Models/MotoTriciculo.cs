@@ -12,9 +12,9 @@ namespace Devcar.Models
        
         public int numeroRodas { get; set; }
         public MotoTriciculo(string tipo, string chassi, DateTime dataFabricacao, string nome, string placa,
-            decimal valor, string cpfCliente, string cor, double potencia, bool vendido, decimal valorVendido,
-            DateTime dataVenda, int numeroRodas) : 
-            base(tipo, chassi, dataFabricacao, nome, placa, valor, cpfCliente, cor, potencia, vendido,valorVendido, dataVenda ) 
+            string cpfCliente, string cor, double potencia, bool vendido, decimal valorVendido,
+            DateTime dataVenda, decimal preco, int numeroRodas) : 
+            base(tipo, chassi, dataFabricacao, nome, placa, cpfCliente, cor, potencia, vendido,valorVendido, dataVenda, preco ) 
         {
         
             this.numeroRodas = numeroRodas;
@@ -22,22 +22,20 @@ namespace Devcar.Models
 
         public override string ToString()
         {
-            return string.Format("Categoria: {0}| Chassi: {1} | Data de Fabricação: {2} | Nome: {3}| " + "\r\n" +
-                                 "Placa: {4} |R$ Valor: {5:c}| CPF: {6}, Cor: {7}, Potência: {8}|Número de rodas: {9}" + "\r\n" + 
-                                 " Vendido: {10}| R$ Valor da Venda: {11:c}| Data da venda: {12}",
+            return string.Format("{0}| Nome: {1}| Chassi: {2}| Data de Fabricação: {3} | Cor: {4}| Potência: {5}| Número de rodas: {6} \r\n" +
+                                "|R$ Preço: {7:c}| R$ Valor de venda: {8:c}| Data da venda: {9}| Placa: {10}| CPF Cliente: {11}|",
              tipo,
+             nome,
              chassi,
              dataFabricacao,
-             nome,
-             placa,
-             valor,
-             cpfCliente,
              cor,
              potencia,
              numeroRodas,
-             vendido,
+             preco,
              valorVendido,
-             dataVenda
+             dataVenda,
+             placa,
+             cpfCliente
             );
         }
 

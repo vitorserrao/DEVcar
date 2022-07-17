@@ -10,12 +10,13 @@ namespace Devcar.Screens
 {
     public class Menu
     {
-        const short col = 30;
-        const short row = 12;
+        const short col = 40;
+        const short row = 14;
         
         public virtual void Show(Estoque estoque)
         {
             var menuFabricar = new MenuFabricar();
+            var menuInfs = new MenuInfs();
             Console.Clear();
             DrawCanvas();
             ShowOptions();
@@ -24,7 +25,8 @@ namespace Devcar.Screens
             {
                 case "1": menuFabricar.Show(estoque); Show(estoque); break;
                 case "2": Veiculo.VendaVeiculo(estoque); Show(estoque); break;
-                case "3": Veiculo.ListarInformacao(estoque);Show(estoque); break;
+                case "3": menuInfs.Show(estoque); Show(estoque); break;
+                case "4": Veiculo.AlterarInf(estoque); Show(estoque); break;
                 case "0":
                     {
                         Console.Clear();
@@ -41,9 +43,10 @@ namespace Devcar.Screens
         {
 
             Console.SetCursorPosition(3, 2);
-            Console.WriteLine($"       DEVcar v0.1 ");
+            Console.WriteLine($"             DEVcar v0.1 ");
             Console.SetCursorPosition(2, 3);
-            Console.WriteLine("=============================");
+            Console.WriteLine("=======================================");
+            ;
 
             Console.SetCursorPosition(2, 5);
             Console.WriteLine("1 - Adicionar Novo Veículo");
@@ -63,11 +66,11 @@ namespace Devcar.Screens
             Console.ForegroundColor = ConsoleColor.DarkGreen;
 
             Printhline();
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < row; i++)
             {
                 Console.Write("|");
 
-                for (int line = 0; line <= 30; line++)
+                for (int line = 0; line <= col; line++)
                     Console.Write(" ");
 
                 Console.Write("|");
@@ -78,7 +81,7 @@ namespace Devcar.Screens
         public virtual void Printhline()
         {
             System.Console.Write("+");
-            for (int i = 0; i <= 30; i++)
+            for (int i = 0; i <= col; i++)
             {
                 System.Console.Write("-", Console.ForegroundColor);
             }

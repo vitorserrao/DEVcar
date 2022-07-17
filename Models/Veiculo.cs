@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices; 
 using Devcar.Repositories;
+using Devcar.Screens;
 
 
 namespace Devcar.Models
@@ -16,86 +17,210 @@ namespace Devcar.Models
         public DateTime dataFabricacao { get; set; }
         public string nome { get; set; }
         public string placa { get; set; }
-        public decimal valor { get; set; }
-        public string cpfCliente { get; set; } 
+        public string cpfCliente { get; set; }
         public string cor { get; set; }
         public double potencia { get; set; }
         public bool vendido { get; set; }
         public DateTime dataVenda { get; set; }
         public decimal valorVendido { get; set; }
+        public decimal preco { get; set; }
 
-        public Veiculo(string tipo,  string chassi, DateTime dataFabricacao, string nome, string placa,decimal valor, 
-                       string cpfCliente, string cor, double potencia, bool vendido,decimal valorVendido, DateTime dataVenda)
-        {   
+        public Veiculo(string tipo, string chassi, DateTime dataFabricacao, string nome, string placa,
+                       string cpfCliente, string cor, double potencia, bool vendido, decimal valorVendido, 
+                       DateTime dataVenda, decimal preco)
+        {
             this.tipo = tipo;
             this.chassi = chassi;
             this.dataFabricacao = dataFabricacao;
             this.nome = nome;
             this.placa = placa;
-            this.valor = valor;
             this.cpfCliente = cpfCliente;
             this.cor = cor;
             this.potencia = potencia;
             this.vendido = vendido;
             this.valorVendido = valorVendido;
             this.dataVenda = dataVenda;
-            
-          
+            this.preco = preco; 
         }
 
         public static void VendaVeiculo(Estoque estoque)
         {
             Console.Clear();
+            Console.WriteLine("================= Venda Veículo ================== \r\n");
             Console.Write("Chassi: ");
-            var chassi = (Console.ReadLine());
-            Console.Write("CPF do comprador : ");
-            var cpfCliente = (Console.ReadLine());
-            Console.Write("Valor da Venda: ");
-            var valorVenda = Convert.ToDecimal(Console.ReadLine()); 
+            var chassi = Console.ReadLine();
             var filtrar = estoque.Veiculos.Where(id => id.chassi.StartsWith(chassi)).ToList();
-            filtrar[0].cpfCliente = cpfCliente;
-            filtrar[0].vendido = true;
-            filtrar[0].valorVendido = valorVenda;
-            filtrar[0].dataVenda = DateTime.Now;
-            Console.WriteLine(filtrar[0]);
-            Console.ReadLine();
+            if (!filtrar.Any())
+            {
+                Tratamento(estoque);
+            }
+            
+            
+         Console.Write("CPF do comprador : ");  
+         var cpfCliente = Console.ReadLine();
+         Console.Write("Valor da Venda: ");
+         var valorVendido = Convert.ToDecimal(Console.ReadLine());
+         filtrar[0].vendido = true;
+         filtrar[0].cpfCliente = cpfCliente;
+         filtrar[0].valorVendido = valorVendido;
+         filtrar[0].dataVenda = DateTime.Now;
+         Console.WriteLine("==================================================");
+         Console.WriteLine("Venda realizada com sucesso!");
+         Console.ReadLine();
+            
         }
 
-
-        
-        public static void ListarInformacao(Estoque estoque)
+        public static void ListaTodosVeiculos(Estoque estoque)
         {
-                Console.Clear();
-                Console.WriteLine("LISTA DE PRODUTOS CADASTRADOS");
-                Console.WriteLine("=============================" + "\r\n");
-                int count = 1;
-                var filtrar = estoque.Veiculos.Where(status => status.vendido == false).ToList();
-                if (!filtrar.Any())
+
+            Console.Clear();
+            Console.WriteLine("   Lista de Todos os Veículos");
+            Console.WriteLine("===================================");
+            Console.WriteLine("Digite a categoria de veículo (Carro, Moto, Camionete ou Todas)");
+            var categoria = Console.ReadLine().ToLower();
+
+            var filtrar = estoque.Veiculos.ToList();
+            int count = 1;
+            if (!filtrar.Any())
+            {
+                Console.WriteLine("Estoque vazio e sem registro de venda");
+            }
+            else
+            {
+                if (categoria == "todos")
                 {
-                    Console.WriteLine("Estoque ZERADO hora de Fabricar!");
+                    foreach (var veiculo in filtrar)
+                    {
+                        Console.WriteLine("\r\n");
+                        Console.WriteLine($"{count} {veiculo.ToString()}" + "\r\n");
+
+                        count++;
+                    }
+                    count = 1;
                 }
                 else
                 {
-                    
+                    var filtro = estoque.Veiculos.Where(item => item.tipo == categoria).ToList();
                     foreach (var veiculo in filtrar)
-                        {
+                    {
+                        Console.WriteLine("\r\n");
+                        Console.WriteLine($"{count} {veiculo.ToString()}" + "\r\n");
 
-                            Console.WriteLine($"Veiculo {count}: {veiculo.ToString()}" + "\r\n");
-
-                            count++;
-                        }
-                        count = 1;
+                        count++;
                     }
+                    count = 1;
+                }
+            }
 
-                Console.ReadLine();
-            
+
+            Console.ReadLine();
+
         }
-        public void alterarInf(string novaCor, decimal novoValor)
+        public static void ListarVeiculosDisponivel(Estoque estoque, string escolhe)
         {
-            cor = novaCor;
-            valor = novoValor;
+            Console.Clear();
+
+            int count = 1;
+            var statusVenda = false;
+            var mensagem = "     Lista de veículo disponível";
+            if (escolhe == "3")
+            {
+                statusVenda = true;
+                mensagem = "     Lista de veículos vendidos";
+            }
+            var filtrar = estoque.Veiculos.Where(status => status.vendido == statusVenda).ToList();
+            Console.WriteLine(mensagem);
+            Console.WriteLine("==========================================");
+
+            if (!filtrar.Any())
+            {
+                Console.WriteLine("Não foi vendido nenhum veículo!");
+            }
+            else
+            {
+
+                foreach (var veiculo in filtrar)
+                {
+
+                    Console.WriteLine($"{count}: {veiculo.ToString()}" + "\r\n");
+
+                    count++;
+                }
+                count = 1;
+            }
+
+            Console.ReadLine();
+
+        }
+        public static void VendaValoresVeiculos(Estoque estoque, string escolhe)
+        {
+            Console.Clear();
+
+            int count = 1;
+            var filtrar = estoque.Veiculos.OrderBy(valor => valor.valorVendido).ToList();
+            var mensagem = "     Lista de veículo vendido com menores preços";
+            if (escolhe == "4")
+            {
+                filtrar = estoque.Veiculos.OrderBy(valor => valor.valorVendido).Reverse().ToList();
+                mensagem = "     Lista de veículo vendido com maiores preços";
+            }
+           
+            Console.WriteLine(mensagem);
+            Console.WriteLine("==========================================");
+
+            if (!filtrar.Any())
+            {
+                Console.WriteLine("Não foi vendido nenhum veículo!");
+            }
+            else
+            {
+
+                foreach (var veiculo in filtrar)
+                {
+
+                    Console.WriteLine($"{count}: {veiculo.ToString()}" + "\r\n");
+
+                    count++;
+                }
+                count = 1;
+            }
+
+            Console.ReadLine();
+
+        }
+        public static void Tratamento(Estoque estoque)
+        {
+            Console.Write("Veículo Não encontrado! Enter para voltar ao Menu Principal!");
+            Console.ReadLine();
+            var menu = new Menu();
+            menu.Show(estoque);
+        }
+        public static void AlterarInf(Estoque estoque)
+        {
+            Console.Clear();
+            Console.WriteLine("================= Alteração de Veículo ==================");
+            Console.Write("Chassi: ");
+            var chassi = Console.ReadLine();
+            var filtrar = estoque.Veiculos.Where(id => id.chassi.StartsWith(chassi) && id.vendido == false).ToList();
+            if (!filtrar.Any())
+            {
+                Tratamento(estoque);
+            }
+            var corAntiga = filtrar[0].cor;
+            var precoAntigo = filtrar[0].preco;
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine($"Cor atual do veículo: {corAntiga}");
+            Console.WriteLine($"Preço atual do veículo: R${precoAntigo}");
+            Console.WriteLine("----------------------------------");
+
+            Console.Write("Nova cor do veículo: ");
+            var corNova = filtrar[0].cor  = Console.ReadLine();
+            Console.Write("Novo Preço do veículo R$: ");
+            var precoNovo = filtrar[0].preco = Convert.ToDecimal(Console.ReadLine());
+            Console.WriteLine("===================================");
+            Console.WriteLine($"Alterações realizadas com sucesso: {corAntiga} -> {corNova} e R$ {precoAntigo} -> R$ {precoNovo}");
+            Console.ReadLine();
         }
 
-       
     }
 }
