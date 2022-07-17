@@ -10,7 +10,18 @@ DEV-car é um sistema que automatiza o armazenamento de informações referentes
   
  ### Adicionar Novo Veículo:
   Para adicionar um novo veículo basta digitar **1** no menu principal, em seguida selecione a categoria de veículo que deseja adcionar (**1** Moto/Tricículo, **2** Carro, **3** Camionete). Posteriomente basta prencher os dados que o sistema pede até finalizar voltando para o menu principal.
-    ![alt text](https://github.com/vitorserrao/DEVcar/blob/main/img/Menu_Add.JPG)
+  
+   ![alt text](https://github.com/vitorserrao/DEVcar/blob/main/img/Menu_Add.JPG)
+   
+  ### Vender  Veículo:
+  Para vender um novo veículo basta digitar **2** no menu principal, e digitar o Chassi do veículo que deseja vender, CPF do comprador e o Valor da venda.
+  
+   ### Relatórios:
+  Para exibir um relatório  basta digitar **3** no menu principal, posteriomente escolher qual tipo de relatório deseja.
+    ![alt text](https://github.com/vitorserrao/DEVcar/blob/main/img/Menu_Relatorio.JPG)
+    
+    
+   
 ## 🛠️ Construído com
 
 - [C#]- Todo sistema feito em C#.
