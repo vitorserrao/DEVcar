@@ -52,7 +52,7 @@ namespace Devcar.Models
             var filtrar = estoque.Veiculos.Where(id => id.chassi.StartsWith(chassi)).ToList();
             if (!filtrar.Any())
             {
-                Tratamento(estoque);
+                Tratamento(estoque, "principal","Veículo Não encontrado! Enter para voltar ao Menu Principal!");
             }
             
             
@@ -76,41 +76,44 @@ namespace Devcar.Models
             Console.Clear();
             Console.WriteLine("   Lista de Todos os Veículos");
             Console.WriteLine("===================================");
-            Console.WriteLine("Digite a categoria de veículo (Carro, Moto, Camionete ou Todas)");
+            Console.WriteLine("Digite a categoria de veículo desejada (Carro, Moto, Camionete ou Todas):");
             var categoria = Console.ReadLine().ToLower();
 
-            var filtrar = estoque.Veiculos.ToList();
+            
             int count = 1;
-            if (!filtrar.Any())
+            
+            if (categoria == "todas")
             {
-                Console.WriteLine("Estoque vazio e sem registro de venda");
+                var filtrar = estoque.Veiculos.ToList();
+                if (!filtrar.Any())
+                {
+                    Tratamento(estoque, "principal", "Estoque vazio e sem registro de venda");
+                }
+                foreach (var veiculo in filtrar)
+                {
+                    Console.WriteLine("\r\n");
+                    Console.WriteLine($"{count} {veiculo.ToString()}" + "\r\n");
+                    count++;
+                }
+                count = 1;
             }
             else
             {
-                if (categoria == "todos")
+                var filtro = estoque.Veiculos.Where(item => item.tipo == categoria).ToList();
+                if (!filtro.Any())
                 {
-                    foreach (var veiculo in filtrar)
-                    {
-                        Console.WriteLine("\r\n");
-                        Console.WriteLine($"{count} {veiculo.ToString()}" + "\r\n");
-
-                        count++;
-                    }
-                    count = 1;
+                    Tratamento(estoque, "principal", "Categoria de veículo está vazia ou não existe");
                 }
-                else
+                foreach (var veiculo in filtro)
                 {
-                    var filtro = estoque.Veiculos.Where(item => item.tipo == categoria).ToList();
-                    foreach (var veiculo in filtrar)
-                    {
-                        Console.WriteLine("\r\n");
-                        Console.WriteLine($"{count} {veiculo.ToString()}" + "\r\n");
+                    Console.WriteLine("\r\n");
+                    Console.WriteLine($"{count} {veiculo.ToString()}" + "\r\n");
 
-                        count++;
-                    }
-                    count = 1;
+                    count++;
                 }
+                count = 1;
             }
+         
 
 
             Console.ReadLine();
@@ -188,12 +191,13 @@ namespace Devcar.Models
             Console.ReadLine();
 
         }
-        public static void Tratamento(Estoque estoque)
-        {
-            Console.Write("Veículo Não encontrado! Enter para voltar ao Menu Principal!");
+        public static void Tratamento(Estoque estoque, string menu, string mensagem)
+        {   
+            Console.Write(mensagem);
             Console.ReadLine();
-            var menu = new Menu();
-            menu.Show(estoque);
+            if(menu == "fabricar"){var ir = new MenuFabricar(); ir.Show(estoque); }
+            else{ var ir = new Menu(); ir.Show(estoque); }
+           
         }
         public static void AlterarInf(Estoque estoque)
         {
@@ -204,7 +208,7 @@ namespace Devcar.Models
             var filtrar = estoque.Veiculos.Where(id => id.chassi.StartsWith(chassi) && id.vendido == false).ToList();
             if (!filtrar.Any())
             {
-                Tratamento(estoque);
+                Tratamento(estoque,"principal","Veículo Não encontrado! Enter para voltar ao Menu Principal!");
             }
             var corAntiga = filtrar[0].cor;
             var precoAntigo = filtrar[0].preco;
@@ -212,14 +216,17 @@ namespace Devcar.Models
             Console.WriteLine($"Cor atual do veículo: {corAntiga}");
             Console.WriteLine($"Preço atual do veículo: R${precoAntigo}");
             Console.WriteLine("----------------------------------");
-
-            Console.Write("Nova cor do veículo: ");
-            var corNova = filtrar[0].cor  = Console.ReadLine();
-            Console.Write("Novo Preço do veículo R$: ");
-            var precoNovo = filtrar[0].preco = Convert.ToDecimal(Console.ReadLine());
-            Console.WriteLine("===================================");
-            Console.WriteLine($"Alterações realizadas com sucesso: {corAntiga} -> {corNova} e R$ {precoAntigo} -> R$ {precoNovo}");
-            Console.ReadLine();
+            try
+            {
+                Console.Write("Nova cor do veículo: ");
+                var corNova = filtrar[0].cor = Console.ReadLine();
+                Console.Write("Novo Preço do veículo R$: ");
+                var precoNovo = filtrar[0].preco = Convert.ToDecimal(Console.ReadLine());
+                Console.WriteLine("===================================");
+                Console.WriteLine($"Alterações realizadas com sucesso: {corAntiga} -> {corNova} e R$ {precoAntigo} -> R$ {precoNovo}");
+                Console.ReadLine();
+            }
+            catch { Veiculo.Tratamento(estoque, "principal", "Ops! Digite um valor válido!"); }
         }
 
     }

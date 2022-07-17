@@ -22,7 +22,7 @@ namespace Devcar.Models
 
         public override string ToString()
         {
-            return string.Format("{0}| Nome: {1}| Chassi: {2}| Data de Fabricação: {3} | Cor: {4}| Potência: {5}| Número de rodas: {6} \r\n" +
+            return string.Format("{0}| Nome: {1}| Chassi: {2} | Data de Fabricação: {3} | Cor: {4}| Potência: {5}| Número de rodas: {6} \r\n" +
                                 "|R$ Preço: {7:c}| R$ Valor de venda: {8:c}| Data da venda: {9}| Placa: {10}| CPF Cliente: {11}|",
              tipo,
              nome,
